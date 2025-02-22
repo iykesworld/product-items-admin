@@ -1,7 +1,7 @@
 import React from 'react'
 import './AdminDashboard.css'
 import { RiAccountCircleFill } from "react-icons/ri";
-import { useFetchInfoQuery } from '../../../client-side/src/redux/features/info/infoApi';
+import { useFetchInfoQuery } from '../redux/features/info/infoApi';
 
 const AdminDashboard = () => {
     const {data, error, isLoading} = useFetchInfoQuery();

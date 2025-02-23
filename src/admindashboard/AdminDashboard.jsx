@@ -1,10 +1,33 @@
 import React from 'react'
 import './AdminDashboard.css'
+import { useDispatch, useSelector } from "react-redux";
 import { RiAccountCircleFill } from "react-icons/ri";
 import { useFetchInfoQuery } from '../redux/features/info/infoApi';
+import { useLogoutUserMutation } from '../redux/features/auth/authApi';
+import { logout } from '../redux/features/auth/authSlice';
+import { useNavigate } from 'react-router';
 
 const AdminDashboard = () => {
     const {data, error, isLoading} = useFetchInfoQuery();
+    const [logoutUser] = useLogoutUserMutation();
+    const dispatch = useDispatch();
+    const { user } = useSelector((state) => state.auth || {});
+    const navigate = useNavigate();
+
+    const handleLogout = async (req, res)=>{
+        const confirmLogout = window.confirm('Are you sure you want to log out');
+        if(!confirmLogout) return;
+        try {
+            logoutUser().unwrap();
+            dispatch(logout());
+            localStorage.removeItem('user');
+            console.log("User logged out successfully and data removed from localStorage.");
+            navigate('/');
+        } catch (error) {
+            console.error("Error during logout:", error);
+            alert("Failed to log out. Please try again.");
+        }
+    }
   return (
     <div className='dashboard'>
         <div className='dashboard-container'>
@@ -15,7 +38,7 @@ const AdminDashboard = () => {
             </div>
             <div>
                 <hr />
-                <button className='dashboard-btn'>Logout</button>
+                <button onClick={handleLogout} className='dashboard-btn'>Logout</button>
             </div>
         </div>
         <table>

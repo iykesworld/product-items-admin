@@ -52,3 +52,20 @@
         background-color: #0069d9;
     }
 }
+@media (max-width: 1024px) {
+    .login-wrapper{
+        width: 100%;
+    }
+    .login-wrapper h1{
+        font-size: 60px;
+    }
+    .login-form label{
+        font-size: 40px;
+    }
+    .login-input{
+        font-size: 30px;
+    }
+    .login-btn{
+        font-size: 30px;
+    }
+}

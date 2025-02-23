@@ -47,3 +47,28 @@ thead{
 .tr-body td{
     padding: 10px;
 }
+@media (max-width: 1024px) {
+    .dashboard{
+        margin: 20px 20px;   
+    }
+    .dashboard-container{
+        flex-direction: column-reverse;
+    }
+    .dashboard-right{
+        width: 500px;
+        gap: 10px;
+    }
+    .dashboard-right-top{
+        font-size: 30px;
+    }
+    .dashboard-btn{
+        width: 400px;
+        font-size: 30px;
+    }
+    .dashboard-head-roll th{
+        font-size: 30px;
+    }
+    .tr-body td{
+        font-size: 24px;
+    }
+}
